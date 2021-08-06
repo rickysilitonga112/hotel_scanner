@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:monitoring_pbl/constants.dart';
 import 'package:monitoring_pbl/components/reusable_button.dart';
 import 'package:monitoring_pbl/pages/scan_screen.dart';
+import 'package:monitoring_pbl/model/nomorKamarModel.dart';
 
 class RoomScreen extends StatefulWidget {
   static const String id = 'room_screen';
@@ -49,19 +50,20 @@ class _RoomScreenState extends State<RoomScreen> {
                   selectedRoomNumber = roomNumber!;
                 });
               },
-              items: <String>['101', '102', '103', '104']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Text(
-                      value,
-                      textAlign: TextAlign.center,
+              items: nomorKamar.map<DropdownMenuItem<String>>(
+                (String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        value,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                );
-              }).toList(),
+                  );
+                },
+              ).toList(),
             ),
           ),
           SizedBox(

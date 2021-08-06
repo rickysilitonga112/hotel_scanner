@@ -3,6 +3,9 @@ import 'package:monitoring_pbl/constants.dart';
 import 'package:monitoring_pbl/components/reusable_button.dart';
 import 'package:monitoring_pbl/pages/room_screen.dart';
 
+// package
+import 'package:rflutter_alert/rflutter_alert.dart'; // rflutter package
+
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
 
@@ -82,6 +85,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                   );
+                } else {
+                  Alert(
+                    context: context,
+                    type: AlertType.error,
+                    title: "LOGIN GAGAL",
+                    desc: "username atau password yang anda masukkan salah",
+                    buttons: [
+                      DialogButton(
+                        child: Text(
+                          "KEMBALI",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                        width: 120,
+                      )
+                    ],
+                  ).show();
                 }
               },
             ),
